@@ -1,5 +1,5 @@
 import unittest
-from main import add, sub, mul, div, modu
+from main import add, sub, mul, div, modu, square_root, power, factorial
 
 
 class TestMain(unittest.TestCase):
@@ -20,6 +20,21 @@ class TestMain(unittest.TestCase):
         self.assertEqual(modu(10, 5), 0)
         with self.assertRaises(ValueError):
             modu(1, 0)
+
+    def test_square_root(self):
+        self.assertEqual(square_root(4), 2)
+        with self.assertRaises(ValueError):
+            square_root(-1)
+
+    def test_power(self):
+        self.assertEqual(power(2, 3), 8)
+        self.assertEqual(power(3, 2), 9)
+
+    def test_factorial(self):
+        self.assertEqual(factorial(0), 1)
+        self.assertEqual(factorial(5), 120)
+        with self.assertRaises(ValueError):
+            factorial(-1)
 
 if __name__ == '__main__':
     unittest.main()
