@@ -19,9 +19,9 @@ jobs:
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag auto_bots:latest
+        run: docker build . --file Dockerfile --tag autobotsmlops:latest
 
       - name: Push Docker iamge
         run: |
-          docker tag auto_bots:latest ${{ secrets.DOCKER_USERNAME }}/auto_bots:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/auto_bots:latest
+          docker tag autobotsmlops:latest ${{ secrets.DOCKER_USERNAME }}/autobotsmlops:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/autobotsmlops:latest
