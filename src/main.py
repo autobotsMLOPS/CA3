@@ -34,30 +34,28 @@ def modu(var1: int, var2: int):
     return var1 % var2
 
 
-@app.route('/calculate', methods=['POST'])
-def calculate():
+@app.route('/calculate/<int:choice>/<num1>/<num2>', methods=['GET'])
+def calculate(choice, num1, num2):
     try:
-        data = request.json
-        choice = data['choice']
-        input1 = data['input1']
-        input2 = data['input2']
+        num1 = float(num1)
+        num2 = float(num2)
 
         if choice == 1:
-            result = add(input1, input2)
+            result = add(num1, num2)
         elif choice == 2:
-            result = sub(input1, input2)
+            result = sub(num1, num2)
         elif choice == 3:
-            result = mul(input1, input2)
+            result = mul(num1, num2)
         elif choice == 4:
-            result = div(input1, input2)
+            result = div(num1, num2)
         elif choice == 5:
-            result = modu(input1, input2)
+            result = modu(num1, num2)
         else:
             return jsonify({'error': 'Invalid choice'}), 400
 
         return jsonify({'result': result})
 
-    except (ValueError, KeyError, TypeError):
+    except (ValueError, ZeroDivisionError):
         return jsonify({'error': 'Invalid input data'}), 400
 
 
