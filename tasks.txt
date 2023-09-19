@@ -1,0 +1,11 @@
+Class Activity 3: Calculator with Flask and Docker
+Group Members: Faraz, Ahmed, Zeerak
+
+Subtasks:
+1) Create a calculator.py file that contains functions for basic arithmetic operations (add, subtract, multiply, divide). Deadline: Sep 20. Assigned to: Faraz
+2) Add more features to the calculator.py file, such as square root, power, factorial, etc. Deadline: Sep 21. Assigned to: Ahmed
+3) Create a flask_app.py file that imports the calculator.py file and creates a Flask application that wraps around its functions. Deadline: Sep 22. Assigned to: Zeerak
+4) Create a Dockerfile that specifies the instructions for building a docker image for the flask application. Deadline: Sep 23. Assigned to: Faraz
+5) Create a GitHub repository for the project and push the calculator.py, flask_app.py, and Dockerfile files to it. Deadline: Sep 24. Assigned to: Ahmed
+6) Create a GitHub action that triggers when a push event occurs on the master branch and builds and uploads the docker image to your docker hub account. Deadline: Sep 25. Assigned to: Zeerak
+7) Test the docker image by downloading it from your docker hub account and running it on your local machine. Check if the flask application works as expected by accessing it via http://localhost:5000/calc/<operation>/<num1>/<num2>. Deadline: Sep 26. Assigned to: All
