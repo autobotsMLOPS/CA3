@@ -1,3 +1,6 @@
+[![Docker Image CI](https://github.com/autobotsmlops/CA3/actions/workflows/docker_image.yml/badge.svg)](https://github.com/autobotsmlops/CA3/actions/workflows/docker_image.yml)
+[![branch main](https://github.com/autobotsmlops/CA3/actions/workflows/main_branch.yml/badge.svg)](https://github.com/autobotsmlops/CA3/actions/workflows/main_branch.yml)
+
 # MLOPS CA3
 
 ## setup
