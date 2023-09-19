@@ -34,21 +34,21 @@ def modu(var1: int, var2: int):
     return var1 % var2
 
 
-@app.route('/calculate/<int:operation>/<num1>/<num2>', methods=['GET'])
+@app.route('/calculate/<operation>/<num1>/<num2>', methods=['GET'])
 def calculate(operation, num1, num2):
     try:
         num1 = float(num1)
         num2 = float(num2)
 
-        if operation == 1:
+        if operation == 'add':
             result = add(num1, num2)
-        elif operation == 2:
+        elif operation == 'sub':
             result = sub(num1, num2)
-        elif operation == 3:
+        elif operation == 'mul':
             result = mul(num1, num2)
-        elif operation == 4:
+        elif operation == 'div':
             result = div(num1, num2)
-        elif operation == 5:
+        elif operation == 'modu':
             result = modu(num1, num2)
         else:
             return jsonify({'error': 'Invalid choice'}), 400
