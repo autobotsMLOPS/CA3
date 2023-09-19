@@ -1,5 +1,3 @@
-print("Hello World")
-
 def add(var1: int, var2: int):
     """Function to Add"""
     return var1 + var2
