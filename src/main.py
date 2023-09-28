@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import math
 
 app = Flask(__name__)
@@ -54,46 +54,31 @@ def factorial(var1: int):
         return 1
     return var1 * factorial(var1 - 1)
 
-@app.route('/calculate/sqrt/<num1>', methods=['GET'])
-def calculate_square_root(num1):
-    try:
-        num1 = float(num1)
-        result = square_root(num1)
-        return jsonify({'result': result})
-    except ValueError:
-        return jsonify({'error': 'Invalid input data'}), 400
-
-@app.route('/calculate/fact/<num1>', methods=['GET'])
-def calculate_factorial(num1):
-    try:
-        num1 = int(num1)
-        result = factorial(num1)
-        return jsonify({'result': result})
-    except ValueError:
-        return jsonify({'error': 'Invalid input data'}), 400
+calculations = {
+    'add': add,
+    'sub': sub,
+    'mul': mul,
+    'div': div,
+    'modu': modu,
+    'sqrt': square_root,
+    'pow': power,
+    'fact': factorial
+}
+# render_template('index.html')
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/calculate/<operation>/<num1>/<num2>', methods=['GET'])
+@app.route('/calculate/<operation>/<num1>', methods=['GET'])
 def calculate(operation, num1, num2=None):
     try:
         num1 = float(num1)
-        if num2 is not None:
+        if num2:
             num2 = float(num2)
-
-        if operation == 'add':
-            result = add(num1, num2)
-        elif operation == 'sub':
-            result = sub(num1, num2)
-        elif operation == 'mul':
-            result = mul(num1, num2)
-        elif operation == 'div':
-            result = div(num1, num2)
-        elif operation == 'modu':
-            result = modu(num1, num2)
-        elif operation == 'pow':
-            result = power(num1, num2)
-        else:
-            return jsonify({'error': 'Invalid choice'}), 400
-
+            
+        result = calculations[operation](num1, num2) if num2 else calculations[operation](num1)
+        
         return jsonify({'result': result})
 
     except (ValueError, ZeroDivisionError):
